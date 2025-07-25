@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老陈AutoZIP - 做好AI代码的每次备份</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>老陈AutoZIP</h1>
+            <p class="subtitle">做好AI代码的每次备份</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="form-section">
+                <div class="input-group">
+                    <label for="output-path">输出路径:</label>
+                    <div class="path-input-container">
+                        <input type="text" id="output-path" class="path-input" placeholder="点击文件夹图标选择输出目录..." readonly>
+                        <button type="button" id="browse-btn" class="browse-btn" title="选择文件夹">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <small class="input-hint">💡 点击文件夹图标打开系统文件选择器，或点击输入框手动输入路径<br>
+                    🔄 程序会自动记住您的选择，相同路径24小时内无需重复输入</small>
+                </div>
+                
+                <div class="action-section">
+                    <button type="button" id="pack-btn" class="pack-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                        立即打包
+                    </button>
+                    <button type="button" id="shutdown-btn" class="shutdown-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                            <line x1="12" y1="2" x2="12" y2="12"></line>
+                        </svg>
+                        关闭程序
+                    </button>
+                </div>
+            </div>
+            
+            <div class="status-section">
+                <div class="status-header">
+                    <span class="status-label">状态:</span>
+                    <span id="status-text" class="status-text">准备就绪</span>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="progress-text" class="progress-text">0%</span>
+                </div>
+                
+                <div id="result-message" class="result-message"></div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 老陈AutoZIP - 做好AI代码的每次备份</p>
+        </footer>
+    </div>
+    
+    <!-- 文件夹选择对话框 -->
+    <input type="file" id="folder-input" webkitdirectory directory multiple style="display: none;">
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
